@@ -7,7 +7,15 @@ def createUser(request, method = ['POST']):
     req_data = json.loads(request.body.decode('utf-8'))
     user = User(id = req_data["id"], password = req_data["pass"])
     user.save()
-    return HttpResponse(request.session['user'])
+    return HttpResponse(user.id)
+@csrf_exempt
+def getUsers(request,method = ['GET']):
+    users = User.objects.all()
+    user_json = [{
+        "id" : str(x.id)
+    } for x in users]
+    return HttpResponse(json.dumps(user_json), content_type="application/json")
+
 
 @csrf_exempt
 def login(request,method = ['POST', 'GET']):
