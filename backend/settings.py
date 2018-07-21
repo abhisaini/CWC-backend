@@ -25,7 +25,7 @@ SECRET_KEY = 'l_^6&al$a7(z*yz8^cx=r^nuti(dldivlua*o^l)%at72fm7f9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["cwc.serveo.net", "localhost"]
+ALLOWED_HOSTS = ["cwc.serveo.net", "localhost", "cwciitk.herokuapp.com"]
 
 
 # Application definition
