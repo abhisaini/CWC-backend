@@ -3,7 +3,7 @@
 ## API Endpoints
 - `POST /api/createuser` : Endpoint to create user. <br>
  	Request Json :
-	```json
+	```js
 	{
 		"id" : userId,
 		"pass" : password
@@ -11,14 +11,14 @@
 
 - `POST /api/login` : Endpoint to login. <br>
  	Request Json :
-	```json
+	```js
 	{
 		"id" : userId,
 		"pass" : password
 	}```
 - `POST /api/createpost` : Endpoint to create post. <br>
  	Request Json :
-	```json
+	```js
 	{
 		"club" : club,
 		"title" : title,
