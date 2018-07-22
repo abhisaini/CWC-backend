@@ -35,4 +35,14 @@
 - `POST /api/session` : Endpoint to check session user. <br>
 
 - `POST /api/deletepost?id=...` : Endpoint to delete post. <br>
+- `POST /api/apply` : Endpoint to aply for volunteer. <br>
+    Request Json :
+	```js
+	{
+		"name" : name,
+		"address" : address,
+        "mobile" : mobile
+	}
+	```
+
 - `GET /api/applicants` : Endpoint to see volunteer applications
