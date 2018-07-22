@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import User, Post
+from .models import User, Post, Applicant
 import json
 @csrf_exempt
 def createUser(request, method = ['POST']):
@@ -64,7 +64,9 @@ def getPosts(request,method = ['GET']):
         "content" : x.content,
         "owner" : x.owner,
         "club" : x.club,
-        "id" : str(x.id)
+        "id" : str(x.id),
+        "created_at" : str(x.created_at),
+        "updated_at" : str(x.updated_at)
     } for x in posts]
     return HttpResponse(json.dumps(post_json), content_type="application/json")
 
@@ -90,4 +92,32 @@ def deletePost(request):
 def checksession(request,method = ['POST', 'GET']):
     print(request.session['user'])
     return HttpResponse(request.session.get("user"))
+
+@csrf_exempt
+def applyVolunteer(request, method = ['POST']):
+    if request.method == 'POST' :
+        req_data = json.loads(request.body.decode('utf-8'))
+        name = req_data["name"]
+        mobile = req_data["mobile"]
+        address = req_data["address"]
+        applicant = Applicant(
+            name = name,
+            mobile = mobile,
+            address = address
+        )
+        applicant.save()
+        msg = {"msg" : "success"}
+        return HttpResponse(json.dumps(msg), content_type="application/json")
+ 
+def getApplicant(request, method = ['GET']):
+    applicants = Applicant.objects.all()
+    applicant_json = [{
+        "name" : x.name,
+        "mobile" : x.mobile,
+        "address" : x.address,
+        "timestamp" : str(x.timestamp),
+        "id" : str(x.id),
+    } for x in applicants]
+    return HttpResponse(json.dumps(applicant_json), content_type="application/json")
+    
 #
