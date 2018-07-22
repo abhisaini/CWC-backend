@@ -35,4 +35,4 @@
 - `POST /api/session` : Endpoint to check session user. <br>
 
 - `POST /api/deletepost?id=...` : Endpoint to delete post. <br>
-- `GET /api/applicants` : ENdpoint to see volunteer applications
+- `GET /api/applicants` : Endpoint to see volunteer applications
